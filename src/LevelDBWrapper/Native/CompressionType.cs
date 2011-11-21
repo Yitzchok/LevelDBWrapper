@@ -6,11 +6,11 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-namespace Native
-{
-    public enum CompressionType
-    {
-        kNoCompression = 0x0,
-        kSnappyCompression = 0x1
-    }
+namespace LevelDBWrapper.Native {
+
+public enum CompressionType {
+  NoCompression = 0x0,
+  SnappyCompression = 0x1
+}
+
 }

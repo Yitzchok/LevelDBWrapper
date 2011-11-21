@@ -6,45 +6,37 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-namespace Native
-{
+namespace LevelDBWrapper.Native {
 
-    using System;
-    using System.Runtime.InteropServices;
+using System;
+using System.Runtime.InteropServices;
 
-    public class Snapshot : IDisposable
-    {
-        private HandleRef swigCPtr;
-        protected bool swigCMemOwn;
+public class Snapshot : IDisposable {
+  private HandleRef swigCPtr;
+  protected bool swigCMemOwn;
 
-        internal Snapshot(IntPtr cPtr, bool cMemoryOwn)
-        {
-            swigCMemOwn = cMemoryOwn;
-            swigCPtr = new HandleRef(this, cPtr);
+  internal Snapshot(IntPtr cPtr, bool cMemoryOwn) {
+    swigCMemOwn = cMemoryOwn;
+    swigCPtr = new HandleRef(this, cPtr);
+  }
+
+  internal static HandleRef getCPtr(Snapshot obj) {
+    return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  public virtual void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          throw new MethodAccessException("C++ destructor does not have public access");
         }
-
-        internal static HandleRef getCPtr(Snapshot obj)
-        {
-            return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
-        }
-
-        public virtual void Dispose()
-        {
-            lock (this)
-            {
-                if (swigCPtr.Handle != IntPtr.Zero)
-                {
-                    if (swigCMemOwn)
-                    {
-                        swigCMemOwn = false;
-                        throw new MethodAccessException("C++ destructor does not have public access");
-                    }
-                    swigCPtr = new HandleRef(null, IntPtr.Zero);
-                }
-                GC.SuppressFinalize(this);
-            }
-        }
-
+        swigCPtr = new HandleRef(null, IntPtr.Zero);
+      }
+      GC.SuppressFinalize(this);
     }
+  }
+
+}
 
 }

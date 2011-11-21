@@ -6,30 +6,25 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-namespace Native
-{
+namespace LevelDBWrapper.Native {
 
-    using System;
-    using System.Runtime.InteropServices;
+using System;
+using System.Runtime.InteropServices;
 
-    public class SWIGTYPE_p_p_leveldb__Snapshot
-    {
-        private HandleRef swigCPtr;
+public class SWIGTYPE_p_p_leveldb__Snapshot {
+  private HandleRef swigCPtr;
 
-        internal SWIGTYPE_p_p_leveldb__Snapshot(IntPtr cPtr, bool futureUse)
-        {
-            swigCPtr = new HandleRef(this, cPtr);
-        }
+  internal SWIGTYPE_p_p_leveldb__Snapshot(IntPtr cPtr, bool futureUse) {
+    swigCPtr = new HandleRef(this, cPtr);
+  }
 
-        protected SWIGTYPE_p_p_leveldb__Snapshot()
-        {
-            swigCPtr = new HandleRef(null, IntPtr.Zero);
-        }
+  protected SWIGTYPE_p_p_leveldb__Snapshot() {
+    swigCPtr = new HandleRef(null, IntPtr.Zero);
+  }
 
-        internal static HandleRef getCPtr(SWIGTYPE_p_p_leveldb__Snapshot obj)
-        {
-            return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
-        }
-    }
+  internal static HandleRef getCPtr(SWIGTYPE_p_p_leveldb__Snapshot obj) {
+    return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
+  }
+}
 
 }

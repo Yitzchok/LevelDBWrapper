@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Native;
+using LevelDBWrapper.Native;
 
 namespace LevelDBWrapper.Sample
 {
@@ -14,17 +14,17 @@ namespace LevelDBWrapper.Sample
             var dbAccessor = new DBAccessor();
             var status = dbAccessor.open(new Options
             {
-                errorIfExists = false,
-                createIfMissing = true,
-                compression = CompressionType.kSnappyCompression,
+                ErrorIfExists = false,
+                CreateIfMissing = true,
+                Compression = CompressionType.SnappyCompression,
 
             }, "./Data");
 
-            if (status.ok())
+            if (status.IsReady())
             {
                 Console.WriteLine("LevelDB startup OK");
 
-                var readOptions = new ReadOptions { fillCache = false };
+                var readOptions = new ReadOptions { FillCache = false };
                 var user = dbAccessor.get(readOptions, "user/yitzchok");
 
                 if (string.IsNullOrEmpty(user))
@@ -39,7 +39,7 @@ namespace LevelDBWrapper.Sample
                 Console.WriteLine(user);
                 Console.WriteLine(dbAccessor.get(readOptions, "user/other"));
             }
-            else if (status.isNotFound())
+            else if (status.IsNotFound())
             {
                 Console.WriteLine("LevelDB not found");
             }

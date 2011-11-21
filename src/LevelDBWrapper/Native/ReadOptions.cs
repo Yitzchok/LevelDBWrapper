@@ -6,95 +6,75 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-namespace Native
-{
+namespace LevelDBWrapper.Native {
 
-    using System;
-    using System.Runtime.InteropServices;
+using System;
+using System.Runtime.InteropServices;
 
-    public class ReadOptions : IDisposable
-    {
-        private HandleRef swigCPtr;
-        protected bool swigCMemOwn;
+public class ReadOptions : IDisposable {
+  private HandleRef swigCPtr;
+  protected bool swigCMemOwn;
 
-        internal ReadOptions(IntPtr cPtr, bool cMemoryOwn)
-        {
-            swigCMemOwn = cMemoryOwn;
-            swigCPtr = new HandleRef(this, cPtr);
+  internal ReadOptions(IntPtr cPtr, bool cMemoryOwn) {
+    swigCMemOwn = cMemoryOwn;
+    swigCPtr = new HandleRef(this, cPtr);
+  }
+
+  internal static HandleRef getCPtr(ReadOptions obj) {
+    return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~ReadOptions() {
+    Dispose();
+  }
+
+  public virtual void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          LeveldbPINVOKE.delete_ReadOptions(swigCPtr);
         }
-
-        internal static HandleRef getCPtr(ReadOptions obj)
-        {
-            return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
-        }
-
-        ~ReadOptions()
-        {
-            Dispose();
-        }
-
-        public virtual void Dispose()
-        {
-            lock (this)
-            {
-                if (swigCPtr.Handle != IntPtr.Zero)
-                {
-                    if (swigCMemOwn)
-                    {
-                        swigCMemOwn = false;
-                        LeveldbPINVOKE.delete_ReadOptions(swigCPtr);
-                    }
-                    swigCPtr = new HandleRef(null, IntPtr.Zero);
-                }
-                GC.SuppressFinalize(this);
-            }
-        }
-
-        public bool verifyChecksums
-        {
-            set
-            {
-                LeveldbPINVOKE.ReadOptions_verifyChecksums_set(swigCPtr, value);
-            }
-            get
-            {
-                bool ret = LeveldbPINVOKE.ReadOptions_verifyChecksums_get(swigCPtr);
-                return ret;
-            }
-        }
-
-        public bool fillCache
-        {
-            set
-            {
-                LeveldbPINVOKE.ReadOptions_fillCache_set(swigCPtr, value);
-            }
-            get
-            {
-                bool ret = LeveldbPINVOKE.ReadOptions_fillCache_get(swigCPtr);
-                return ret;
-            }
-        }
-
-        public Snapshot snapshot
-        {
-            set
-            {
-                LeveldbPINVOKE.ReadOptions_snapshot_set(swigCPtr, Snapshot.getCPtr(value));
-            }
-            get
-            {
-                IntPtr cPtr = LeveldbPINVOKE.ReadOptions_snapshot_get(swigCPtr);
-                Snapshot ret = (cPtr == IntPtr.Zero) ? null : new Snapshot(cPtr, false);
-                return ret;
-            }
-        }
-
-        public ReadOptions()
-            : this(LeveldbPINVOKE.new_ReadOptions(), true)
-        {
-        }
-
+        swigCPtr = new HandleRef(null, IntPtr.Zero);
+      }
+      GC.SuppressFinalize(this);
     }
+  }
+
+  public bool VerifyChecksums {
+    set {
+      LeveldbPINVOKE.ReadOptions_VerifyChecksums_set(swigCPtr, value);
+    } 
+    get {
+      bool ret = LeveldbPINVOKE.ReadOptions_VerifyChecksums_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public bool FillCache {
+    set {
+      LeveldbPINVOKE.ReadOptions_FillCache_set(swigCPtr, value);
+    } 
+    get {
+      bool ret = LeveldbPINVOKE.ReadOptions_FillCache_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+  public Snapshot snapshot {
+    set {
+      LeveldbPINVOKE.ReadOptions_snapshot_set(swigCPtr, Snapshot.getCPtr(value));
+    } 
+    get {
+      IntPtr cPtr = LeveldbPINVOKE.ReadOptions_snapshot_get(swigCPtr);
+      Snapshot ret = (cPtr == IntPtr.Zero) ? null : new Snapshot(cPtr, false);
+      return ret;
+    } 
+  }
+
+  public ReadOptions() : this(LeveldbPINVOKE.new_ReadOptions(), true) {
+  }
+
+}
 
 }

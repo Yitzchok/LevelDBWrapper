@@ -6,68 +6,54 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-namespace Native
-{
+namespace LevelDBWrapper.Native {
 
-    using System;
-    using System.Runtime.InteropServices;
+using System;
+using System.Runtime.InteropServices;
 
-    public class WriteOptions : IDisposable
-    {
-        private HandleRef swigCPtr;
-        protected bool swigCMemOwn;
+public class WriteOptions : IDisposable {
+  private HandleRef swigCPtr;
+  protected bool swigCMemOwn;
 
-        internal WriteOptions(IntPtr cPtr, bool cMemoryOwn)
-        {
-            swigCMemOwn = cMemoryOwn;
-            swigCPtr = new HandleRef(this, cPtr);
+  internal WriteOptions(IntPtr cPtr, bool cMemoryOwn) {
+    swigCMemOwn = cMemoryOwn;
+    swigCPtr = new HandleRef(this, cPtr);
+  }
+
+  internal static HandleRef getCPtr(WriteOptions obj) {
+    return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~WriteOptions() {
+    Dispose();
+  }
+
+  public virtual void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          LeveldbPINVOKE.delete_WriteOptions(swigCPtr);
         }
-
-        internal static HandleRef getCPtr(WriteOptions obj)
-        {
-            return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
-        }
-
-        ~WriteOptions()
-        {
-            Dispose();
-        }
-
-        public virtual void Dispose()
-        {
-            lock (this)
-            {
-                if (swigCPtr.Handle != IntPtr.Zero)
-                {
-                    if (swigCMemOwn)
-                    {
-                        swigCMemOwn = false;
-                        LeveldbPINVOKE.delete_WriteOptions(swigCPtr);
-                    }
-                    swigCPtr = new HandleRef(null, IntPtr.Zero);
-                }
-                GC.SuppressFinalize(this);
-            }
-        }
-
-        public WriteOptions()
-            : this(LeveldbPINVOKE.new_WriteOptions(), true)
-        {
-        }
-
-        public bool sync
-        {
-            set
-            {
-                LeveldbPINVOKE.WriteOptions_sync_set(swigCPtr, value);
-            }
-            get
-            {
-                bool ret = LeveldbPINVOKE.WriteOptions_sync_get(swigCPtr);
-                return ret;
-            }
-        }
-
+        swigCPtr = new HandleRef(null, IntPtr.Zero);
+      }
+      GC.SuppressFinalize(this);
     }
+  }
+
+  public WriteOptions() : this(LeveldbPINVOKE.new_WriteOptions(), true) {
+  }
+
+  public bool Sync {
+    set {
+      LeveldbPINVOKE.WriteOptions_Sync_set(swigCPtr, value);
+    } 
+    get {
+      bool ret = LeveldbPINVOKE.WriteOptions_Sync_get(swigCPtr);
+      return ret;
+    } 
+  }
+
+}
 
 }

@@ -6,111 +6,91 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-namespace Native
-{
+namespace LevelDBWrapper.Native {
 
-    using System;
-    using System.Runtime.InteropServices;
+using System;
+using System.Runtime.InteropServices;
 
-    public class DBTableBuilder : IDisposable
-    {
-        private HandleRef swigCPtr;
-        protected bool swigCMemOwn;
+public class DBTableBuilder : IDisposable {
+  private HandleRef swigCPtr;
+  protected bool swigCMemOwn;
 
-        internal DBTableBuilder(IntPtr cPtr, bool cMemoryOwn)
-        {
-            swigCMemOwn = cMemoryOwn;
-            swigCPtr = new HandleRef(this, cPtr);
+  internal DBTableBuilder(IntPtr cPtr, bool cMemoryOwn) {
+    swigCMemOwn = cMemoryOwn;
+    swigCPtr = new HandleRef(this, cPtr);
+  }
+
+  internal static HandleRef getCPtr(DBTableBuilder obj) {
+    return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
+  }
+
+  ~DBTableBuilder() {
+    Dispose();
+  }
+
+  public virtual void Dispose() {
+    lock(this) {
+      if (swigCPtr.Handle != IntPtr.Zero) {
+        if (swigCMemOwn) {
+          swigCMemOwn = false;
+          LeveldbPINVOKE.delete_DBTableBuilder(swigCPtr);
         }
-
-        internal static HandleRef getCPtr(DBTableBuilder obj)
-        {
-            return (obj == null) ? new HandleRef(null, IntPtr.Zero) : obj.swigCPtr;
-        }
-
-        ~DBTableBuilder()
-        {
-            Dispose();
-        }
-
-        public virtual void Dispose()
-        {
-            lock (this)
-            {
-                if (swigCPtr.Handle != IntPtr.Zero)
-                {
-                    if (swigCMemOwn)
-                    {
-                        swigCMemOwn = false;
-                        LeveldbPINVOKE.delete_DBTableBuilder(swigCPtr);
-                    }
-                    swigCPtr = new HandleRef(null, IntPtr.Zero);
-                }
-                GC.SuppressFinalize(this);
-            }
-        }
-
-        public DBTableBuilder(Options options)
-            : this(LeveldbPINVOKE.new_DBTableBuilder(Options.getCPtr(options)), true)
-        {
-            if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
-        }
-
-        public Status setOptions(Options options)
-        {
-            Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_setOptions(swigCPtr, Options.getCPtr(options)), true);
-            if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
-            return ret;
-        }
-
-        public Status getStatus()
-        {
-            Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_getStatus(swigCPtr), true);
-            return ret;
-        }
-
-        public Status open(string fname)
-        {
-            Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_open(swigCPtr, fname), true);
-            if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
-            return ret;
-        }
-
-        public Status add(string key, string value)
-        {
-            Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_add(swigCPtr, key, value), true);
-            if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
-            return ret;
-        }
-
-        public void flush()
-        {
-            LeveldbPINVOKE.DBTableBuilder_flush(swigCPtr);
-        }
-
-        public long numEntries()
-        {
-            long ret = LeveldbPINVOKE.DBTableBuilder_numEntries(swigCPtr);
-            return ret;
-        }
-
-        public long fileSize()
-        {
-            long ret = LeveldbPINVOKE.DBTableBuilder_fileSize(swigCPtr);
-            return ret;
-        }
-
-        public Status finish()
-        {
-            Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_finish(swigCPtr), true);
-            return ret;
-        }
-
-        public void abandon()
-        {
-            LeveldbPINVOKE.DBTableBuilder_abandon(swigCPtr);
-        }
-
+        swigCPtr = new HandleRef(null, IntPtr.Zero);
+      }
+      GC.SuppressFinalize(this);
     }
+  }
+
+  public DBTableBuilder(Options options) : this(LeveldbPINVOKE.new_DBTableBuilder(Options.getCPtr(options)), true) {
+    if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public Status setOptions(Options options) {
+    Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_setOptions(swigCPtr, Options.getCPtr(options)), true);
+    if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public Status getStatus() {
+    Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_getStatus(swigCPtr), true);
+    return ret;
+  }
+
+  public Status open(string fname) {
+    Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_open(swigCPtr, fname), true);
+    if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public Status add(string key, string value) {
+    Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_add(swigCPtr, key, value), true);
+    if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public void flush() {
+    LeveldbPINVOKE.DBTableBuilder_flush(swigCPtr);
+  }
+
+  public long numEntries() {
+    long ret = LeveldbPINVOKE.DBTableBuilder_numEntries(swigCPtr);
+    return ret;
+  }
+
+  public long fileSize() {
+    long ret = LeveldbPINVOKE.DBTableBuilder_fileSize(swigCPtr);
+    return ret;
+  }
+
+  public Status finish() {
+    Status ret = new Status(LeveldbPINVOKE.DBTableBuilder_finish(swigCPtr), true);
+    return ret;
+  }
+
+  public void abandon() {
+    LeveldbPINVOKE.DBTableBuilder_abandon(swigCPtr);
+  }
+
+}
 
 }
