@@ -1,3 +1,5 @@
+//Source https://github.com/osmandapp/JLevelDB/blob/master/db.i
+
 %module Leveldb
 
 %include std_string.i
@@ -57,28 +59,19 @@ namespace leveldb {
     WriteOptions();
    
     // Default: false
+	%rename(Sync) sync
     bool sync;
-
-	   
-    // If "post_write_snapshot" is non-NULL, and the write succeeds,
-    // *post_write_snapshot will be modified to point to a snapshot of
-    // the DB state immediately after this write.  The caller must call
-    // DB::ReleaseSnapshot(*post_write_snapshotsnapshot) when the
-    // snapshot is no longer needed.
-    // Default: NULL
-    //%rename(postWriteSnapshot) post_write_snapshot;
-    //const Snapshot** post_write_snapshot;
-    
    };
    
    
   class Status {
     public :
     // Returns true iff the status indicates success.
+	%rename(IsReady) ok
     bool ok();
 
     // Returns true iff the status indicates a NotFound error.
-    %rename(isNotFound) IsNotFound;
+    %rename(IsNotFound) IsNotFound;
     bool IsNotFound();
 
     std::string ToString();
@@ -87,43 +80,44 @@ namespace leveldb {
   enum CompressionType {
     // NOTE: do not change the values of existing entries, as these are
     // part of the persistent format on disk.
-    kNoCompression     = 0x0,
-    kSnappyCompression = 0x1
+    NoCompression     = 0x0,
+    SnappyCompression = 0x1
   };
 
 
   struct Options {
     Options();
 
-    %rename(createIfMissing) create_if_missing;
+    %rename(CreateIfMissing) create_if_missing;
     bool create_if_missing;
 
     // Default: false
-    %rename(errorIfExists) error_if_exists;
+    %rename(ErrorIfExists) error_if_exists;
     bool error_if_exists;
 
     // Default: false
-    %rename(paranoidChecks) paranoid_checks;
+    %rename(ParanoidChecks) paranoid_checks;
     bool paranoid_checks;
   
     // Default: 4MB
-    %rename(writeBufferSize) write_buffer_size;
+    %rename(WriteBufferSize) write_buffer_size;
     size_t write_buffer_size;
 
     // Default: 1000
-    %rename(maxOpenFiles) max_open_files;
+    %rename(MaxOpenFiles) max_open_files;
     int max_open_files;
 
     // Cache* block_cache;
 
     // Default: 4K
-    %rename(blockSize) block_size;
+    %rename(BlockSize) block_size;
     size_t block_size;
     
     // Default: 16
-    %rename(blockRestartInterval) block_restart_interval;
+    %rename(BlockRestartInterval) block_restart_interval;
     int block_restart_interval;
   
+    %rename(Compression) compression;
     CompressionType compression;
     
     // const Comparator* comparator;
@@ -133,10 +127,10 @@ namespace leveldb {
   
   struct ReadOptions {
   	
-  	%rename(verifyChecksums) verify_checksums;
+  	%rename(VerifyChecksums) verify_checksums;
 	bool verify_checksums;
 	
-	%rename(fillCache) fill_cache;
+	%rename(FillCache) fill_cache;
     bool fill_cache;
 
     // Default: NULL
