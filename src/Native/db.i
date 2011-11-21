@@ -59,7 +59,7 @@ namespace leveldb {
     WriteOptions();
    
     // Default: false
-	%rename(Sync) sync
+	%rename(Sync) sync;
     bool sync;
    };
    
@@ -67,7 +67,7 @@ namespace leveldb {
   class Status {
     public :
     // Returns true iff the status indicates success.
-	%rename(IsReady) ok
+	%rename(IsReady) ok;
     bool ok();
 
     // Returns true iff the status indicates a NotFound error.
