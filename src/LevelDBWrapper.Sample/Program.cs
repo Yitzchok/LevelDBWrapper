@@ -35,6 +35,10 @@ namespace LevelDBWrapper.Sample
                     transaction.Put("user/other", "Other User");
                     dbAccessor.write(new WriteOptions(), transaction);
                 }
+                else
+                {
+                    user = dbAccessor.get(readOptions, "user/yitzchok");
+                }
 
                 Console.WriteLine(user);
                 Console.WriteLine(dbAccessor.get(readOptions, "user/other"));
