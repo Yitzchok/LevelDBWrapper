@@ -13,6 +13,17 @@
 #include "options.h"
 %}
 
+%rename("LastStatus") lastStatus;
+%rename("Open") open(const Options& options, const std::string& name);
+%rename("Get") get(const ReadOptions& options, char const* key);
+%rename("Write") write(const WriteOptions& options, DBWriteBatch& updates);
+%rename("Put") put(const WriteOptions& options, const std::string key, const std::string value);
+%rename("GetSnapshot") getSnapshot();
+%rename("ReleaseSnapshot") releaseSnapshot(const Snapshot* snapshot);
+%rename("GetProperty") getProperty(std::string property);
+%rename("GetSnapshotValue") getSnapshotValue(Snapshot** p);
+%rename("Remove") remove(const WriteOptions& options, const std::string key);
+%rename("NewIterator") newIterator(const ReadOptions& options);
 
 %{
  namespace leveldb {
@@ -45,7 +56,6 @@
    };
   }
 %}
-
 
 namespace leveldb {
   
@@ -363,7 +373,6 @@ namespace leveldb {
       void releaseSnapshot(const Snapshot* snapshot) {
          pointer -> ReleaseSnapshot(snapshot);
       };
-      
       std::string getProperty(std::string property) {
       	 std::string value;
          if(pointer ->GetProperty(Slice(property),&value)) {

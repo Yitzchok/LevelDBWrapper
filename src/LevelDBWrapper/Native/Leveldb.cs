@@ -24,8 +24,8 @@ public class Leveldb {
     return ret;
   }
 
-  public static Snapshot getSnapshotValue(SWIGTYPE_p_p_leveldb__Snapshot p) {
-    IntPtr cPtr = LeveldbPINVOKE.getSnapshotValue(SWIGTYPE_p_p_leveldb__Snapshot.getCPtr(p));
+  public static Snapshot GetSnapshotValue(SWIGTYPE_p_p_leveldb__Snapshot p) {
+    IntPtr cPtr = LeveldbPINVOKE.GetSnapshotValue(SWIGTYPE_p_p_leveldb__Snapshot.getCPtr(p));
     Snapshot ret = (cPtr == IntPtr.Zero) ? null : new Snapshot(cPtr, false);
     return ret;
   }

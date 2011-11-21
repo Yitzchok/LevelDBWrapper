@@ -48,8 +48,8 @@ public class DBTable : IDisposable {
     return ret;
   }
 
-  public DBIterator newIterator(ReadOptions opts) {
-    IntPtr cPtr = LeveldbPINVOKE.DBTable_newIterator(swigCPtr, ReadOptions.getCPtr(opts));
+  public DBIterator NewIterator(ReadOptions opts) {
+    IntPtr cPtr = LeveldbPINVOKE.DBTable_NewIterator(swigCPtr, ReadOptions.getCPtr(opts));
     DBIterator ret = (cPtr == IntPtr.Zero) ? null : new DBIterator(cPtr, false);
     if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
     return ret;

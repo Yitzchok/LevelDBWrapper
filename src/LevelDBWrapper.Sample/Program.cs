@@ -12,7 +12,7 @@ namespace LevelDBWrapper.Sample
         {
             Console.WriteLine("Starting");
             var dbAccessor = new DBAccessor();
-            var status = dbAccessor.open(new Options
+            var status = dbAccessor.Open(new Options
             {
                 ErrorIfExists = false,
                 CreateIfMissing = true,
@@ -25,7 +25,7 @@ namespace LevelDBWrapper.Sample
                 Console.WriteLine("LevelDB startup OK");
 
                 var readOptions = new ReadOptions { FillCache = false };
-                var user = dbAccessor.get(readOptions, "user/yitzchok");
+                var user = dbAccessor.Get(readOptions, "user/yitzchok");
 
                 if (string.IsNullOrEmpty(user))
                 {
@@ -33,15 +33,15 @@ namespace LevelDBWrapper.Sample
                     var transaction = new DBWriteBatch();
                     transaction.Put("user/yitzchok", "Yitzchok");
                     transaction.Put("user/other", "Other User");
-                    dbAccessor.write(new WriteOptions(), transaction);
+                    dbAccessor.Write(new WriteOptions(), transaction);
                 }
                 else
                 {
-                    user = dbAccessor.get(readOptions, "user/yitzchok");
+                    user = dbAccessor.Get(readOptions, "user/yitzchok");
                 }
 
                 Console.WriteLine(user);
-                Console.WriteLine(dbAccessor.get(readOptions, "user/other"));
+                Console.WriteLine(dbAccessor.Get(readOptions, "user/other"));
             }
             else if (status.IsNotFound())
             {

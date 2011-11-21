@@ -347,8 +347,8 @@ class LeveldbPINVOKE {
   [DllImport("leveldb_managed", EntryPoint="CSharp_delete_DBTable")]
   public static extern void delete_DBTable(HandleRef jarg1);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBTable_newIterator")]
-  public static extern IntPtr DBTable_newIterator(HandleRef jarg1, HandleRef jarg2);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBTable_NewIterator")]
+  public static extern IntPtr DBTable_NewIterator(HandleRef jarg1, HandleRef jarg2);
 
   [DllImport("leveldb_managed", EntryPoint="CSharp_new_DBTableBuilder")]
   public static extern IntPtr new_DBTableBuilder(HandleRef jarg1);
@@ -383,38 +383,38 @@ class LeveldbPINVOKE {
   [DllImport("leveldb_managed", EntryPoint="CSharp_DBTableBuilder_abandon")]
   public static extern void DBTableBuilder_abandon(HandleRef jarg1);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_lastStatus_set")]
-  public static extern void DBAccessor_lastStatus_set(HandleRef jarg1, HandleRef jarg2);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_LastStatus_set")]
+  public static extern void DBAccessor_LastStatus_set(HandleRef jarg1, HandleRef jarg2);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_lastStatus_get")]
-  public static extern IntPtr DBAccessor_lastStatus_get(HandleRef jarg1);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_LastStatus_get")]
+  public static extern IntPtr DBAccessor_LastStatus_get(HandleRef jarg1);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_open")]
-  public static extern IntPtr DBAccessor_open(HandleRef jarg1, HandleRef jarg2, string jarg3);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_Open")]
+  public static extern IntPtr DBAccessor_Open(HandleRef jarg1, HandleRef jarg2, string jarg3);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_get")]
-  public static extern string DBAccessor_get(HandleRef jarg1, HandleRef jarg2, string jarg3);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_Get")]
+  public static extern string DBAccessor_Get(HandleRef jarg1, HandleRef jarg2, string jarg3);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_write")]
-  public static extern IntPtr DBAccessor_write(HandleRef jarg1, HandleRef jarg2, HandleRef jarg3);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_Write")]
+  public static extern IntPtr DBAccessor_Write(HandleRef jarg1, HandleRef jarg2, HandleRef jarg3);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_put")]
-  public static extern IntPtr DBAccessor_put(HandleRef jarg1, HandleRef jarg2, string jarg3, string jarg4);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_Put")]
+  public static extern IntPtr DBAccessor_Put(HandleRef jarg1, HandleRef jarg2, string jarg3, string jarg4);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_remove")]
-  public static extern IntPtr DBAccessor_remove(HandleRef jarg1, HandleRef jarg2, string jarg3);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_Remove")]
+  public static extern IntPtr DBAccessor_Remove(HandleRef jarg1, HandleRef jarg2, string jarg3);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_newIterator")]
-  public static extern IntPtr DBAccessor_newIterator(HandleRef jarg1, HandleRef jarg2);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_NewIterator")]
+  public static extern IntPtr DBAccessor_NewIterator(HandleRef jarg1, HandleRef jarg2);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_getSnapshot")]
-  public static extern IntPtr DBAccessor_getSnapshot(HandleRef jarg1);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_GetSnapshot")]
+  public static extern IntPtr DBAccessor_GetSnapshot(HandleRef jarg1);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_releaseSnapshot")]
-  public static extern void DBAccessor_releaseSnapshot(HandleRef jarg1, HandleRef jarg2);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_ReleaseSnapshot")]
+  public static extern void DBAccessor_ReleaseSnapshot(HandleRef jarg1, HandleRef jarg2);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_getProperty")]
-  public static extern string DBAccessor_getProperty(HandleRef jarg1, string jarg2);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_DBAccessor_GetProperty")]
+  public static extern string DBAccessor_GetProperty(HandleRef jarg1, string jarg2);
 
   [DllImport("leveldb_managed", EntryPoint="CSharp_new_DBAccessor")]
   public static extern IntPtr new_DBAccessor();
@@ -422,8 +422,8 @@ class LeveldbPINVOKE {
   [DllImport("leveldb_managed", EntryPoint="CSharp_delete_DBAccessor")]
   public static extern void delete_DBAccessor(HandleRef jarg1);
 
-  [DllImport("leveldb_managed", EntryPoint="CSharp_getSnapshotValue")]
-  public static extern IntPtr getSnapshotValue(HandleRef jarg1);
+  [DllImport("leveldb_managed", EntryPoint="CSharp_GetSnapshotValue")]
+  public static extern IntPtr GetSnapshotValue(HandleRef jarg1);
 }
 
 }

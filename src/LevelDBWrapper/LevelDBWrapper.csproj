@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Native\CompressionType.cs" />
     <Compile Include="Native\DBAccessor.cs" />
     <Compile Include="Native\DBIterator.cs" />
@@ -50,6 +49,7 @@
     <Compile Include="Native\Leveldb.cs" />
     <Compile Include="Native\LeveldbPINVOKE.cs" />
     <Compile Include="Native\Options.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Native\ReadOptions.cs" />
     <Compile Include="Native\Snapshot.cs" />
     <Compile Include="Native\Status.cs" />

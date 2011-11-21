@@ -41,66 +41,66 @@ public class DBAccessor : IDisposable {
     }
   }
 
-  public Status lastStatus {
+  public Status LastStatus {
     set {
-      LeveldbPINVOKE.DBAccessor_lastStatus_set(swigCPtr, Status.getCPtr(value));
+      LeveldbPINVOKE.DBAccessor_LastStatus_set(swigCPtr, Status.getCPtr(value));
     } 
     get {
-      IntPtr cPtr = LeveldbPINVOKE.DBAccessor_lastStatus_get(swigCPtr);
+      IntPtr cPtr = LeveldbPINVOKE.DBAccessor_LastStatus_get(swigCPtr);
       Status ret = (cPtr == IntPtr.Zero) ? null : new Status(cPtr, false);
       return ret;
     } 
   }
 
-  public Status open(Options options, string name) {
-    Status ret = new Status(LeveldbPINVOKE.DBAccessor_open(swigCPtr, Options.getCPtr(options), name), true);
+  public Status Open(Options options, string name) {
+    Status ret = new Status(LeveldbPINVOKE.DBAccessor_Open(swigCPtr, Options.getCPtr(options), name), true);
     if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public string get(ReadOptions options, string key) {
-    string ret = LeveldbPINVOKE.DBAccessor_get(swigCPtr, ReadOptions.getCPtr(options), key);
+  public string Get(ReadOptions options, string key) {
+    string ret = LeveldbPINVOKE.DBAccessor_Get(swigCPtr, ReadOptions.getCPtr(options), key);
     if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public Status write(WriteOptions options, DBWriteBatch updates) {
-    Status ret = new Status(LeveldbPINVOKE.DBAccessor_write(swigCPtr, WriteOptions.getCPtr(options), DBWriteBatch.getCPtr(updates)), true);
+  public Status Write(WriteOptions options, DBWriteBatch updates) {
+    Status ret = new Status(LeveldbPINVOKE.DBAccessor_Write(swigCPtr, WriteOptions.getCPtr(options), DBWriteBatch.getCPtr(updates)), true);
     if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public Status put(WriteOptions options, string key, string value) {
-    Status ret = new Status(LeveldbPINVOKE.DBAccessor_put(swigCPtr, WriteOptions.getCPtr(options), key, value), true);
+  public Status Put(WriteOptions options, string key, string value) {
+    Status ret = new Status(LeveldbPINVOKE.DBAccessor_Put(swigCPtr, WriteOptions.getCPtr(options), key, value), true);
     if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public Status remove(WriteOptions options, string key) {
-    Status ret = new Status(LeveldbPINVOKE.DBAccessor_remove(swigCPtr, WriteOptions.getCPtr(options), key), true);
+  public Status Remove(WriteOptions options, string key) {
+    Status ret = new Status(LeveldbPINVOKE.DBAccessor_Remove(swigCPtr, WriteOptions.getCPtr(options), key), true);
     if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public DBIterator newIterator(ReadOptions options) {
-    IntPtr cPtr = LeveldbPINVOKE.DBAccessor_newIterator(swigCPtr, ReadOptions.getCPtr(options));
+  public DBIterator NewIterator(ReadOptions options) {
+    IntPtr cPtr = LeveldbPINVOKE.DBAccessor_NewIterator(swigCPtr, ReadOptions.getCPtr(options));
     DBIterator ret = (cPtr == IntPtr.Zero) ? null : new DBIterator(cPtr, false);
     if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public Snapshot getSnapshot() {
-    IntPtr cPtr = LeveldbPINVOKE.DBAccessor_getSnapshot(swigCPtr);
+  public Snapshot GetSnapshot() {
+    IntPtr cPtr = LeveldbPINVOKE.DBAccessor_GetSnapshot(swigCPtr);
     Snapshot ret = (cPtr == IntPtr.Zero) ? null : new Snapshot(cPtr, false);
     return ret;
   }
 
-  public void releaseSnapshot(Snapshot snapshot) {
-    LeveldbPINVOKE.DBAccessor_releaseSnapshot(swigCPtr, Snapshot.getCPtr(snapshot));
+  public void ReleaseSnapshot(Snapshot snapshot) {
+    LeveldbPINVOKE.DBAccessor_ReleaseSnapshot(swigCPtr, Snapshot.getCPtr(snapshot));
   }
 
-  public string getProperty(string property) {
-    string ret = LeveldbPINVOKE.DBAccessor_getProperty(swigCPtr, property);
+  public string GetProperty(string property) {
+    string ret = LeveldbPINVOKE.DBAccessor_GetProperty(swigCPtr, property);
     if (LeveldbPINVOKE.SWIGPendingException.Pending) throw LeveldbPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
