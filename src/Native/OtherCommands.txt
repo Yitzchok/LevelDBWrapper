@@ -1,0 +1,3 @@
+# git clone https://code.google.com/p/leveldb/
+# Generate a linux shared object file
+gcc -m32 -shared leveldb.o leveldb_managed.o -o leveldb_managed.so
